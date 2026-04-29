@@ -1,0 +1,385 @@
+
+@font-face {
+    font-family: 'Flame';
+    src: url('../fonts/FlameRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Flamelight';
+    src: url('../fonts/FlameSans.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body::before {
+    content: "";
+    transform: scale(1.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: url("../img/fond.png") center/cover no-repeat;
+
+    filter: blur(8px);
+    z-index: -2;
+}
+
+body::after{
+content: "";
+inset:0;
+font-family:'Flame';
+background: linear-gradient( rgba(0,0,0,0.35), rgba(0, 0, 0, 0.95));
+background-size:100% auto;
+background-repeat:repeat-y;
+background-position:top center;
+height: 100%;
+min-height: 100vh;
+z-index: -1;
+position: fixed;
+}
+
+body{
+
+font-family:'Flame';
+
+}
+
+.overlay{
+padding:20px;
+color:white;
+}
+
+/* LOGO */
+.logo{
+display:flex;
+justify-content:center;
+margin-top:5px;
+margin-bottom:10px;
+}
+
+.logo img{
+width:320px;
+}
+
+/* UI */
+.topbar{
+position:fixed;
+top:10px;
+right:10px;
+z-index:10;
+}
+
+button{
+margin:4px;
+padding:8px 14px;
+border:none;
+border-radius:10px;
+background:#a88664;
+color:white;
+font-family:'Flamelight';
+}
+
+.panel{
+background:#74502C;
+margin:70px 0;
+padding:25px;
+border-radius:14px;
+position:relative;
+transition: 0.3s;
+}
+
+.city-wrapper{
+position:absolute;
+top:-35px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.city-title{
+background:#74502C;
+padding:10px 30px;
+border-radius:12px;
+font-size:26px;
+font-family:'Flame';
+}
+
+.delete-btn {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    cursor: pointer;
+
+    background: url("../img/trash-2.svg") center/contain no-repeat;
+    background-color: #da5e55;
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 4px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    align-items: center;
+    justify-content: center;
+    
+}
+.deletetask-btn {
+    width: 20px;
+    height: 18px;
+    display: flex;
+    cursor: pointer;
+    color: #da5e55;
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 1px;
+    margin-top: 2px;
+    margin-bottom: 3px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Flamelight';
+    font-weight: 600;
+    
+}
+
+.progress{
+display:grid;
+height:22px;
+margin-bottom:15px;
+margin-left: -4px;
+margin-right: -4px;
+}
+
+.seg{
+background:#efe4de;
+margin:2px;
+margin-left: 4px;
+margin-right: 4px;
+border-radius:6px;
+overflow:hidden;
+}
+
+.fill{
+background:#5cd65c;
+height:100%;
+}
+
+.grid{
+display:grid;
+gap:12px;
+}
+
+.card{
+background:#FDFBF5;
+color:rgb(61, 45, 32);
+padding:10px;
+border-radius:8px;
+cursor: grab;
+}
+
+
+.level-name{
+background:#f8f5ec;
+padding:6px;
+border-radius:6px;
+margin-right:8px;
+font-family:'Flamelight';
+text-align:center;
+font-weight:bold;
+flex: 1;
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.task{
+font-family:'Flamelight';
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.task-left{
+display:flex;
+align-items:center;
+cursor:pointer;
+}
+
+.box{
+width:18px;
+height:18px;
+border:2px solid rgba(61,45,32,0.45);
+margin-right:6px;
+margin-bottom:6px;
+background:white;
+border-radius:4px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.checked .box{
+background:#5cd65c;
+}
+
+.checked .box::after{
+content:"✓";
+color:white;
+font-weight:bold;
+}
+
+.editable{
+outline:1px dashed #999;
+padding: 2px;
+margin-bottom: 4px;
+border-radius: 4px;
+cursor: text;
+}
+
+.add-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: rgba(255,255,255,0.2);
+    color: white;
+
+   
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+.add-card:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.01);
+}
+
+.locked {
+    opacity: 0.7;
+    pointer-events: none;
+    filter: grayscale(80%);
+}
+
+.card button {
+    width: 99%;
+    margin-top: 12px;
+
+    padding: 10px 0;
+    margin-right: 4px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgb(177, 129, 90);
+    color: #ffffff;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:'Flamelight';
+
+    transition: 0.2s;
+}
+.card button:hover {
+    background: rgb(145, 104, 71);
+    transform: translateY(-1px);
+}
+
+.prestiges {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.prestige-list {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+}
+
+.prestige-item {
+    width: 38px;
+    height: 38px;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(255,255,255,0.08);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+    font-size: 18px;
+}
+
+.prestige-item.active {
+    background: rgba(255, 228, 153, 0.25);
+    opacity: 1;
+}
+
+.prestige-item.inactive {
+    opacity: 0.25;
+    filter: grayscale(1);
+}
+
+.prestige-item:hover {
+    transform: scale(1.05);
+}
+
+.reward-block{
+    margin-top:18px;
+    padding-top:8px;
+    border-top:1px solid #c2a79ca7;
+}
+
+.reward-title{
+    font-size:12px;
+    opacity:0.6;
+    margin-bottom:4px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Flamelight';
+}
+
+.reward-input{
+    align-items: center;
+    justify-content: center;
+    padding:6px;
+    border-radius:6px;
+    min-height:20px;
+    font-family: 'Flamelight';
+}
+
+.reward-display{
+    margin-top: 8px;
+    padding:6px;
+    background:#e9d7d033;
+    border-radius:6px;
+    font-family: 'Flamelight';
+}
